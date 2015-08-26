@@ -1,0 +1,16 @@
+{% load staticfiles %}
+{% include 'ondeparei/base/header.html' %}
+
+<body id="top">
+<main>
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-social/bootstrap-social.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+
+    {% block content %}{% endblock %}
+</main>
+</body>
+
+{% include 'ondeparei/base/footer.html' %}

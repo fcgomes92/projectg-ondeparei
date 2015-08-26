@@ -1,0 +1,98 @@
+{% extends 'ondeparei/base/body.html' %}
+{% load form_css %}
+{% block content %}
+
+    <div class="col-sm-6 col-xs-12 col-md-4"
+         style="position: absolute;  top: 50%;  left:50%;  transform: translate(-50%,-50%);">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h3>Bem vindo, {{ user.first_name }}!</h3>
+            </div>
+            <div class="panel-body">
+                <div class="container col-sm-10 col-sm-offset-1">
+                    {% if messages %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{% if message.tags %}{% if message.tags == 'error' %}warning{% else %}info{% endif %}{% endif %}"
+                                     role="alert">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            <h4 class="text-center">Product</h4>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="/ondeparei/product/create">
+                                <button type="button" class="btn btn-default btn-block">Create Product</button>
+                            </a>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="/ondeparei/product/list">
+                                <button type="button" class="btn btn-default btn-block">List Products</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            <h4 class="text-center">Detail</h4>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="/ondeparei/detail/create">
+                                <button type="button" class="btn btn-default btn-block">Create Detail</button>
+                            </a>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="/ondeparei/detail/create">
+                                <button type="button" class="btn btn-default btn-block disabled">List Details</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            <h4 class="text-center">Marks</h4>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="">
+                                <button type="button" class="btn btn-default btn-block disabled">Create Mark</button>
+                            </a>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="">
+                                <button type="button" class="btn btn-default btn-block disabled">List Marks</button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            <h4 class="text-center">User</h4>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="">
+                                <button type="button" class="btn btn-default btn-block disabled">Profile</button>
+                            </a>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="/ondeparei/logout/">
+                                <button type="button" class="btn btn-default btn-block">Logout</button>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

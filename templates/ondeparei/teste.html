@@ -1,0 +1,65 @@
+{% extends 'ondeparei/base/body.html' %}
+{% block content %}
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="row">
+            <div class="col-sm-12">
+                <label for="country_select">Country</label>
+            </div>
+            <div class="col-sm-12">
+                <select id="country_select" class="form-control">
+                    {% for i in countries %}
+                        <option value="{{ i.id }}">{{ i.code }} - {{ i.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <label for="state_select">State</label>
+            </div>
+            <div class="col-sm-12">
+                <select id="state_select" class="form-control" disabled>
+                    <span id="wirte_state_span"></span>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <label for="city_select">City</label>
+
+            </div>
+            <div class="col-sm-12">
+                <select id="city_select" class="form-control" disabled>
+                    <span id="wirte_city_span"></span>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#country_select').change(function () {
+                var country_val = $(this).find(':selected').val();
+                $.get('/locale/statepercountry/' + country_val + '/', function (data, status) {
+                    $('#state_select').attr('disabled', false).empty();
+                    $('#city_select').empty();
+                    jQuery.each(data, function () {
+                        $('#state_select').append(new Option($(this)[0].name, $(this)[0].id));
+                    });
+                })
+            });
+
+            $('#state_select').change(function () {
+                var state_val = $(this).find(':selected').val();
+                $.get('/locale/cityperstate/' + state_val + '/', function (data, status) {
+                    $('#city_select').attr('disabled', false).empty();
+                    jQuery.each(data, function () {
+                        $('#city_select').append(new Option($(this)[0].name, $(this)[0].id));
+                    });
+                })
+            });
+        });
+    </script>
+{% endblock %}

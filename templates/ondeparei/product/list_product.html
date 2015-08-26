@@ -1,0 +1,29 @@
+{% extends 'ondeparei/base/body.html' %}
+{% block content %}
+
+    <div class="col-sm-6 col-xs-12 col-md-4"
+         style="position: absolute;  top: 50%;  left:50%;  transform: translate(-50%,-50%);">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h3>Bem vindo, {{ user.first_name }}!</h3>
+            </div>
+            <div class="panel-body">
+                <div class="container col-sm-10 col-sm-offset-1">
+                    {% if messages %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{% if message.tags %}{% if message.tags == 'error' %}warning{% else %}info{% endif %}{% endif %}"
+                                     role="alert">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                    {% for product in products %}
+                        <a href="/ondeparei/product/{{ product.id }}/detail/">
+                            <h4>{{ product.name }}</h4>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
