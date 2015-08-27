@@ -13,7 +13,7 @@ from ondeparei.views.login.view_register_confirm import RegisterConfirmRequest
 from ondeparei.views.user.view_user_home import UserHomeView
 from ondeparei.views.product.view_create_product import CreateProductRequest
 from ondeparei.views.product.view_list_product import ListProductsView
-from ondeparei.views.detail_product.view_detail_product import CreateDetailProduct
+from ondeparei.views.detail_product.view_detail_product import CreateDetailRequest, ListDetailRequest
 
 urlpatterns = [
     url('^$', Test.as_view(), name='teste'),
@@ -34,10 +34,10 @@ urlpatterns = [
     # Products
     url(r'^product/create/$', CreateProductRequest.as_view(), name='create_product'),
     url(r'^product/list/$', ListProductsView.as_view(), name='list_products'),
-    # url(r'^product/list/(?P<pid>[0-9]+)/detail/$', .as_view(), name='detail_product'),
+    # url(r'^product/list/(?P<pid>[0-9]+)/detail/$', .as_view(), name='detail'),
 
     # Detail
-    url(r'^detail/create/$', CreateDetailProduct.as_view(), name='create_detail'),
-    url(r'^detail/list/$', CreateDetailProduct.as_view(), name='list_details'),
+    url(r'^detail/create/$', CreateDetailRequest.as_view(), name='create_detail'),
+    url(r'^detail/list/$', ListDetailRequest.as_view(), name='list_details'),
     # url(r'^detail/list/(?P<pid>[0-9]+)/detail/$', .as_view(), name='detail_detail'),
 ]

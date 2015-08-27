@@ -9,7 +9,7 @@ from ondeparei.util.strings import LOGIN_URL
 
 
 class RequestLogout(View):
-    http_method_names = ['get']
+    http_method_names = ['get', ]
 
     def get(self, request, *arks, **kargs):
         logout(request=request)

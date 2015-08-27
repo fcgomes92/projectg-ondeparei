@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from ondeparei.util.strings import PAGE_TITLE_BASE, LOGIN_URL
 from ondeparei.models import Product, UserModel
 
+
 class ListProductsView(TemplateView):
     template_name = 'ondeparei/product/list_product.html'
     http_method_names = ['get', ]
